@@ -98,7 +98,7 @@ app.post('/portal/pt-resources', async (req, res) => {
         console.log(req.body);
         const { name, level, description, time_taken_to_complete, url } = req.body;
 
-        const created = Date.now();
+        //const created = Date.now();
 
         const request = req.body;
 
@@ -121,7 +121,6 @@ app.post('/portal/pt-resources', async (req, res) => {
         if (run) {
             const new_resource = new pt_resources({
                 name,
-                created,
                 level,
                 description,
                 time_taken_to_complete,
@@ -131,7 +130,7 @@ app.post('/portal/pt-resources', async (req, res) => {
             const insert = await pt_resources.create(new_resource);
 
             if (insert != null) {
-                res.status(200).send("New Resource Adding Operation Sucessfully");
+                res.status(201).send("New Resource Adding Operation Sucessfully");
             } else {
                 res.status(409).send("New Resource Adding Operation Failed");
             }
@@ -159,7 +158,13 @@ app.delete('/portal/pt-resources', async (req, res) => {
             run = false;
         }
 
-        console.log(Object.keys(request).length);
+        console.log("delete");
+
+        if (run) {
+            console.log(Object.keys(request).length);
+        } else {
+            console.log("Run is false");
+        }
 
         for (const element in request) {
             if (request.hasOwnProperty(element) && request[element].length === 0) {
@@ -167,6 +172,12 @@ app.delete('/portal/pt-resources', async (req, res) => {
                 run = false;
                 break;
             }
+        }
+
+        if (run) {
+            console.log(Object.keys(request).length);
+        } else {
+            console.log("Run is false");
         }
 
         if (run) {
@@ -178,7 +189,7 @@ app.delete('/portal/pt-resources', async (req, res) => {
             const del = await pt_resources.findOneAndDelete(query);
 
             if (del != null) {
-                res.status(200).send("RESOURCE DELETED");
+                res.status(204).send("RESOURCE DELETED");
             } else {
                 res.status(409).send("RESOURCE NOT DELETED");
             }
@@ -188,7 +199,7 @@ app.delete('/portal/pt-resources', async (req, res) => {
 
     } catch (error) {
         console.log(`Error ${error}`);
-        res.status(409).send(`Error ${error}`);
+        res.status(409).send(`Error: ${error}`);
     }
 });
 

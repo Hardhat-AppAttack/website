@@ -3,7 +3,10 @@ const validate = require('mongoose-validator');
 
 module.exports = mongoose.model('pen-test-resources', new mongoose.Schema({
     name: String,
-    created: Date,
+    created: {
+        type: Date,
+        default: Date.now
+    },
     level: Number,
     description: String,
     time_taken_to_complete: String,
