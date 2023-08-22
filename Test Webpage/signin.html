@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="WebDev_Photos/Logo.png" />
+  <title>Signin Page</title>
+  <style>
+     .container {
+    background-image:linear-gradient(#07062b, #17154e, #060430) ;
+    padding: 20px;
+    border-radius: 8px;
+    height: 500px;
+    width: 45%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <hr style="color: #ffdb4d;"> 
+    <h1 style="color: rgb(90, 92, 94);"> Sign in </h1>
+    <h2>Welcome, Get started!</h2>
+    <form id="signin-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirm-password" placeholder="Confirm password" required>
+      <button type="submit">Create account </button>
+    </form>
+    <a href=login.html id="create"> <h4> Already have an account? Login.</h4> </a> 
+  </div>
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/4d476870c9.js" crossorigin="anonymous"></script>
+</body>
+</html>
