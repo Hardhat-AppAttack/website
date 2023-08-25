@@ -1,83 +1,4 @@
-/* body{
-  margin: 0;
-  padding: 0;
-  background: gray;
-}
 
-nav{
-  width: 100%;
-  background: black;
-  overflow: auto;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0 0 0 150px;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a:hover {
-    background-color: #c08e8e;
-    transition: 0.5s;
-    text-transform: none;
-  }
-
-  .logo img{
-    position:absolute;
-    vertical-align: top;
-    width: 50px;
-    height: 50px;
-    margin-left: 50px;
-    margin-top: 25px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-
-  nav a{
-    display: inline-block;
-    color: white;
-    width: 100px;
-    padding: 20px 15px;
-    vertical-align: top;
-    margin-right: 20px;
-    height: 50px;
-    line-height: 50px;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  .navbar-container{
-    display: fle;
-  }
-
-  /* .secondary-navbar{
-    margin-left: 75em;
-    margin-top: -90px;
-    overflow: auto;
-    display: flex;
-  } */
-
-/* .facebook img{
-    font-size: 24px;
-    position:absolute;
-    vertical-align: top;
-    width: 50px;
-    height: 50px;
-    margin-left: 75em;
-    margin-top: -90px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-
-.sec-list{
-  display: flex;
-}  */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
@@ -94,6 +15,10 @@ ul {
 
 body {
   font-family: "Poppins", sans-serif;
+  margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .navbar-container {
@@ -319,4 +244,29 @@ body {
 
 .footer-bottom span {
   line-height: 1.2;
+}
+
+.CoreValue-section {
+  background-color: #f4f4f4;
+  width: 100%; 
+  height: 333px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0; 
+  gap: 50px; 
+}
+
+.CoreValue-content {
+  display: grid; 
+  grid-template-rows: auto 1fr; 
+  width: 350px; 
+  align-items: start; 
+  gap: 20px; 
+}
+
+.CoreValue-content ul {
+  list-style-type: decimal;
+  margin-top: 0; 
+  padding-left: 20px; 
 }
