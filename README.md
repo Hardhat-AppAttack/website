@@ -30,9 +30,7 @@ The project aims to design and develop a website for the AppAttack to showcase t
 - Providing actual cyber-security services
 
 ## Constraints:
-- Limited features will be delivered from the above mentioned requirements because of time contraints
-- Project requirements arrived in week 4
-- The deliverables include
+- Given the limited duration of the trimester, only limited features will be delivered from the above mentioned requirements. They include the following.
     - Home Page
     - Services Page
     - User Registeration and Authenticatoin
