@@ -11,8 +11,8 @@ const userSchema = new Schema({
 
     contact: {
         type: String,
-        min: 10,
-        max: 13,
+        minlength: 10,
+        maxlength: 13,
         unique: false, 
         required: true
     },
@@ -30,14 +30,18 @@ const userSchema = new Schema({
         trim: true,
         required: true,
         unique: true,
-        max: 10,
-        min: 10
+        maxlength: 10,
+        minlength: 10
     },
 
     password: {
         type: String, 
         required: true
     }
+
+    // verified: {
+    //     type: Boolean
+    // }
 }, {timestamps: true})
 
 const user = mongoose.model('AppAttack_SignUp', userSchema)
