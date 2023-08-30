@@ -30,7 +30,7 @@ The project aims to design and develop a website for the AppAttack to showcase t
 - Providing actual cyber-security services
 
 ## Constraints:
-- Given the limited duration of the trimester, only limited features will be delivered from the above mentioned requirements. They include the following.
+- Given the limited duration of the trimester (T2 2023), only limited features will be delivered from the above mentioned requirements. They include the following.
     - Home Page
     - Services Page
     - User Registeration and Authenticatoin
@@ -70,3 +70,37 @@ The project aims to design and develop a website for the AppAttack to showcase t
     - As a client, I want to check what AppAttack is about and what services they provide to their clients, read testimonies and contact them for collaboration.
 - **AppAttack members**
     - As a part of AppAttack, I would want to upskill myself using the resource hub and contribute to the project
+
+## Functional Requirements
+
+1. **Function:** The system shall allow users to register 
+    - **Requirement:** A sign up page with a registeration form
+    - **Precondition:** User must have a working email address
+    - **Postcondition:** User receives an email confirmation link
+    - **Optional:** Users can opt to register as an admin. Must wait for approval
+1. **Function:** The system shall allow users to login
+    - **Requirement:** A login Page with a login form
+    - **Precondition:** User must have completed the registeration process
+    - **Postcondition:** User gain access to their progress tracker, discussion board and recruitment interface
+1. **Function:** A recruitment interface to screen prospective candidates
+    - **Requirement:** A replica of the recuitment process used by AppAttack 
+    - **Precondition:** User must be logged in to proceed
+    - **Postcondition:** User can submit their application
+1. **Function:** A resources hub for the users to access education information
+    - **Requirement:** A portal with links to resources for different topics divided by week (similar to Deakin sync)
+    - **Precondition:** None. (No login required)
+    - **Postcondition:** User can access resources for upskilling
+    - **Optional:** Logged in users can tick/untick topics to track their progress
+1. **Function:** A resources hub for the users to access education information
+    - **Requirement:** A portal with links to resources for different topics divided by week (similar to Deakin sync)
+    - **Precondition:** None. (No login required)
+    - **Postcondition:** User can access resources for upskilling
+1. **Function:** A Content Management System for admins to manage website content
+    - **Requirement:** A CMS interface with ability to create, read, update and delete website content and user information
+    - **Precondition:** User must be registered as an admin 
+    - **Postcondition:** User gains admin access to the website content and user information 
+1. **Function:** A Discussion Board for users to share their thoughts, opinions and findings
+    - **Requirement:** An interface to create a post which may contain media/document files and to comment on other posts
+    - **Precondition:** User must be logged in
+    - **Postcondition:** User can again access to post and comment functionality
+
