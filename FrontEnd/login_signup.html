@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="WebDev_Photos/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="login_signup.css">
+    <title>Login/Sign-up - HardHat Enterprises</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar-container">
+        <div class="main-nav">
+          <div class="logo">
+            <a href="homepage.html"><img src="WebDev_Photos/Logo.png" /></a>
+          </div>
+          <div class="NavBar">
+            <nav>
+              <ul class="main-nav-list">
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="testimonial.html">Testimonial</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="portal.html">Portal</a></li>
+                <li><a href="contactUs.html">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="secondary-navbar">
+          <nav>
+            <ul class="sec-list">
+              <li class="nav-item">
+                <a href="#" class="facebook-icon"
+                  ><i class="fa-brands fa-facebook-f" style="color: #ffffff"></i
+                ></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="twitter-icon"
+                  ><i class="fab fa-twitter" style="color: #ffffff"></i
+                ></a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="login_signup.html"><button class="login-sign-up">Login/Sign-up</button></a>
+              </li>            -->
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    <div class="login-signup-container">
+
+        <h2>Welcome to HardHat Enterprises</h2>
+
+        <!-- Login Form -->
+        <div class="form-container" id="login-form">
+            <h3>Login to your account</h3>
+            <form action="login_endpoint" method="post">
+                <div class="input-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="login-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="login-btn">Login</button>
+                </div>
+            </form>
+            <div class="alternative-options">
+                <a href="#" id="switch-to-signup">Don't have an account? Sign-up here!</a>
+                <br>
+                <br>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+        </div>
+
+        <!-- Sign-up Form -->
+        <div class="form-container" id="signup-form" style="display: none;">
+            <h3>Create a new account</h3>
+            <form action="signup_endpoint" method="post">
+                <div class="input-group">
+                    <label for="signup-name">Full Name:</label>
+                    <input type="text" id="signup-name" name="signup-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-confirm-password">Confirm Password:</label>
+                    <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="signup-btn">Sign Up</button>
+                </div>
+            </form>
+            <div class="alternative-options">
+                <a href="#" id="switch-to-login">Already have an account? Login here!</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 HardHat Enterprises. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("switch-to-signup").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("signup-form").style.display = "block";
+        });
+
+        document.getElementById("switch-to-login").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("signup-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        });
+    </script>
+
+</body>
+
+</html>

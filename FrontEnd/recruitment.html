@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="WebDev_Photos/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Recruitment Form</title>
+    <link rel="stylesheet" href="recruitment.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar-container">
+        <div class="main-nav">
+          <div class="logo">
+            <a href="homepage.html"><img src="WebDev_Photos/Logo.png" /></a>
+          </div>
+          <div class="NavBar">
+            <nav>
+              <ul class="main-nav-list">
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="testimonial.html">Testimonial</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="portal.html">Portal</a></li>
+                <li><a href="contactUs.html">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="secondary-navbar">
+          <nav>
+            <ul class="sec-list">
+              <li class="nav-item">
+                <a href="#" class="facebook-icon"
+                  ><i class="fa-brands fa-facebook-f" style="color: #ffffff"></i
+                ></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="twitter-icon"
+                  ><i class="fab fa-twitter" style="color: #ffffff"></i
+                ></a>
+              </li>
+              <li class="nav-item">
+                <a href="login_signup.html"><button class="login-sign-up">Login/Sign-up</button></a>
+              </li>           
+            </ul>
+          </nav>
+        </div>
+      </div>
+    <div class="recruitment-container">
+
+        <h2>Recruitment Form</h2>
+
+        <!-- Recruitment Form -->
+        <div class="form-container">
+            <h3>Apply for a Position</h3>
+            <form action="/path-to-endpoint" method="post">
+                <div class="input-group">
+                    <label for="given_name">Given Name:</label>
+                    <input type="text" id="given_name" name="given_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="family_name">Family Name:</label>
+                    <input type="text" id="family_name" name="family_name" required>
+                </div>
+                    
+                <div class="input-group">
+                    <label for="std_id">Student ID:</label>
+                    <input type="text" id="std_id" name="std_id" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="enrolled_unit">Enrolled Unit:</label>
+                    <input type="text" id="enrolled_unit" name="enrolled_unit" required>
+                </div>
+
+                <!-- target grade -->
+                <div class="input-group">
+                    <label for="target_grade">Target Grade:</label>
+                    <select id="target_grade" name="target_grade" required>
+                        <option value="p">P</option>
+                        <option value="c">C</option>
+                        <option value="d">D</option>
+                        <option value="hd">HD</option>
+                    </select>
+                </div>
+                
+                <!-- reason to join -->
+                <div class="input-group">
+                    <label for="reason_to_join">Reason to Join:</label>
+                    <textarea id="reason_to_join" name="reason_to_join" required></textarea>
+                </div>
+
+                <!-- team -->
+                <div class="input-group">
+                    <label for="team">Team:</label>
+                    <input type="text" id="team" name="team" required>
+                </div>
+
+                <!-- prev_exp -->
+                <div class="input-group">
+                    <label for="prev_exp">Previous Experience:</label>
+                    <textarea type="text" id="prev_exp" name="prev_exp" rows="4" cols="50" required></textarea>
+                </div>
+
+                <!-- leadership_interest -->
+                <div class="input-group">
+                    <label>Leadership Interest:</label>
+                    <div>
+                        <input type="radio" id="yes" name="leadership_interest" value="yes" required>
+                        <label for="yes">Yes</label>
+                
+                        <input type="radio" id="no" name="leadership_interest" value="no" required>
+                        <label for="no">No</label>
+                    </div>
+                </div>
+
+
+                <!-- available days -->
+                <div class="input-group">
+                    <label for="available_days">Available Days:</label>
+                    <input type="text" id="available_days" name="available_days" required>
+                </div>
+
+                <!-- available timing -->
+                <div class="input-group">
+                    <label for="available_timing">Available Timing:</label>
+                    <input type="text" id="available_timing" name="available_timing" required>
+                </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 HardHat Enterprises. All rights reserved.</p>
+    </footer>
+</body>
+</html>

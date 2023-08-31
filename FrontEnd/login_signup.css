@@ -1,0 +1,161 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: gray;
+  }
+  a:visited {
+    color: inherit; /* This will ensure the link retains its original color even after being visited */
+}
+
+  
+  .navbar-container{
+    display: flex;
+    border: 2px solid black; 
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: white;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    font-size: 1.05rem;
+    box-shadow: inset 0 2px 4px 0  rgb(0 0 0 / 0.05);
+  }
+  
+  .main-nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .main-nav-list{
+    display: flex;
+    justify-content: space-between;
+    width:fit-content;
+    list-style: none;
+    margin-left: 2rem;
+  }
+  
+  .main-nav-list li {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+  
+  .main-nav-list li a {
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+  }
+  
+  .main-nav-list li:hover{
+    background-color: rgb(26, 26, 26);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .main-nav-list li:hover a {
+    color: white;
+  } 
+  
+  .secondary-navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sec-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 100%;
+  }
+  
+  .sec-list li a{
+    color: rgb(26, 26, 26);
+    text-decoration: none;
+    width: 100%;
+  }
+  
+  .sec-list li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .facebook-icon {
+    background-color: black;
+    padding: .3rem;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    border-radius: 100rem;
+  }
+
+  .twitter-icon {
+    background-color: black;
+    padding: .3rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: 100rem;
+    margin-right: 5rem;
+  }
+  
+  .login-signup-container {
+    margin-top: 11rem;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  }
+  
+  .form-container {
+    margin-top: 1rem;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 80%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-btn, .signup-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  footer {
+    margin-top: 5rem;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: black;
+    color: white;
+  }
+  
+  
