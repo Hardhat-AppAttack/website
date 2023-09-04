@@ -3,14 +3,30 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/app-attack');
 const swaggerJSDOC = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const pt_resources = require('./models/pt-resources');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const crypto = require('crypto');
+const fs = require('fs');
+
+const pt_resources = require('./models/pt-resources');
+const research_resources = require('./models/research-resources');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, './resources/research/')
+    },
+    filename: function (req, file, cb) {
+        return cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage })
 
 const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'App-Attack',
+            title: 'App-Attack-Portal-API',
             version: '1.0.0'
         },
         servers: [
@@ -47,8 +63,6 @@ app.use(function (req, res, next) {
  *              properties:
  *                  name:
  *                      type: string
- *                  created:
- *                      type: date
  *                  level:
  *                      type: number
  *                  description:
@@ -57,13 +71,57 @@ app.use(function (req, res, next) {
  *                      type: string
  *                  url:
  *                      type: string
+ *                  created:
+ *                      type: data
+ *          research-resources:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                  level:
+ *                      type: number
+ *                  description:
+ *                      type: string
+ *                  time_taken_to_complete:
+ *                      type: string
+ *                  url:
+ *                      type: string
+ *                  created:
+ *                      type: data
  */
 
+/**
+ * @swagger
+ * /portal/api-test:
+ *  get:
+ *      summary: This endpint is used to test if the API is working
+ *      responses:
+ *          200:
+ *              description: To test GET method
+ */
 app.get('/portal/api-test', (req, res) => {
     res.send('The API is working!');
 });
 
-app.get('/portal/pt-resources/beginner', async (req, res) => {
+/**
+ * @swagger
+ * /portal/pt-resources/week-1:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 1 resources
+ *      description: This api end-point is used to fetch all week 1 resources
+ *      responses:
+ *          200:
+ *              description: Week 1 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/pen-test-resources'
+ *          409:
+ *              description: Week 3 Resource Not Found
+ */
+app.get('/portal/pt-resources/week-1', async (req, res) => {
     const resource = await pt_resources.find({ 'level': 0 });
     if (resource != null) {
         console.log(resource);
@@ -73,7 +131,25 @@ app.get('/portal/pt-resources/beginner', async (req, res) => {
     }
 });
 
-app.get('/portal/pt-resources/intermediate', async (req, res) => {
+/**
+ * @swagger
+ * /portal/pt-resources/week-2:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 2 resources
+ *      description: This api end-point is used to fetch all week 2 resources
+ *      responses:
+ *          200:
+ *              description: Week 2 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/pen-test-resources'
+ *          409:
+ *              description: Week 3 Resource Not Found
+ */
+app.get('/portal/pt-resources/week-2', async (req, res) => {
     const resource = await pt_resources.find({ 'level': 1 });
     if (resource != null) {
         console.log(resource);
@@ -83,7 +159,25 @@ app.get('/portal/pt-resources/intermediate', async (req, res) => {
     }
 });
 
-app.get('/portal/pt-resources/advanced', async (req, res) => {
+/**
+ * @swagger
+ * /portal/pt-resources/week-3:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 3 resources
+ *      description: This api end-point is used to fetch all week 3 resources
+ *      responses:
+ *          200:
+ *              description: Week 3 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/pen-test-resources'
+ *          409:
+ *              description: Week 3 Resource Not Found
+ */
+app.get('/portal/pt-resources/week-3', async (req, res) => {
     const resource = await pt_resources.find({ 'level': 2 });
     if (resource != null) {
         console.log(resource);
@@ -93,6 +187,38 @@ app.get('/portal/pt-resources/advanced', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /portal/pt-resources:
+ *  post:
+ *      summary: This end-point is used to add new Pen-test resources 
+ *      description: This end-point is used to add new Pen-test resources 
+ *      parameters:
+ *          
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              multipart/form-data:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name: 
+ *                              type: string
+ *                          week:
+ *                              type: number
+ *                          description:
+ *                              type: string
+ *                          time_taken_to_complete:
+ *                              type: string
+ *                          document:
+ *                              type: string
+ *                              format: binary
+ *      responses:
+ *          200:
+ *              description: To test POST method to add Pen-test resources
+ *          409:
+ *              description: Operation failed or request has a empty field or the entire request is empty
+ */
 app.post('/portal/pt-resources', async (req, res) => {
     try {
         console.log(req.body);
@@ -145,6 +271,29 @@ app.post('/portal/pt-resources', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /portal/pt-resources:
+ *  delete:
+ *      summary: This end-point is used to add new Pen-test resources 
+ *      description: This end-point is used to add new Pen-test resources 
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                          level:
+ *                              type: number
+ *      responses:
+ *          200:
+ *              description: To test DELETE method to delete Pen-test resources
+ *          409:
+ *              description: Operation failed or request has a empty field or the entire request is empty
+ */
 app.delete('/portal/pt-resources', async (req, res) => {
     try {
         const { name, level } = req.body;
@@ -189,9 +338,9 @@ app.delete('/portal/pt-resources', async (req, res) => {
             const del = await pt_resources.findOneAndDelete(query);
 
             if (del != null) {
-                res.status(204).send("RESOURCE DELETED");
+                res.status(204).send("Resource is deleted");
             } else {
-                res.status(409).send("RESOURCE NOT DELETED");
+                res.status(409).send("Resources is not deleted");
             }
         } else if (!run) {
             res.status(409).send("Request is empty or a field is empty or missing");
@@ -202,6 +351,245 @@ app.delete('/portal/pt-resources', async (req, res) => {
         res.status(409).send(`Error: ${error}`);
     }
 });
+
+/**
+ * @swagger
+ * /portal/research-resources/upload:
+ *  post:
+ *      summary: This end-point is used to add new Research resources 
+ *      description: This end-point is used to add new Research resources 
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              multipart/form-data:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name: 
+ *                              type: string
+ *                          week:
+ *                              type: number
+ *                          description:
+ *                              type: string
+ *                          time_taken_to_complete:
+ *                              type: string
+ *                          document:
+ *                              type: string
+ *                              format: binary
+ *                          
+ *      responses:
+ *          200:
+ *              description: To test POST method to add Research resources
+ *          409:
+ *              description: Operation failed or request has a empty field or the entire request is empty
+ */
+app.post('/portal/research-resources/upload', upload.single('document'), async (req, res) => {
+    try {
+        var url = req.file.originalname;
+
+        const { name, week, description, time_taken_to_complete } = req.body;
+
+        const request = req.body;
+
+        console.log(request);
+
+        var run = true;
+
+        if (Object.keys(request).length == 0 || Object.keys(request).length < 4) {
+            run = false;
+        }
+
+        console.log(Object.keys(request).length);
+
+        for (const element in request) {
+            console.log(element);
+            if (request[element].length == 0) {
+                console.log(`Field ${element} is empty`);
+                run = false;
+                break;
+            }
+        }
+
+        if (run) {
+            const new_resource = new research_resources({
+                name,
+                week,
+                description,
+                time_taken_to_complete,
+                url
+            });
+
+            const insert = await research_resources.create(new_resource);
+
+            if (insert != null) {
+                res.status(201).send("New Resource Adding Operation Sucessfully");
+            } else {
+                res.status(409).send("New Resource Adding Operation Failed");
+            }
+        } else if (!run) {
+            res.status(409).send("Request is empty or a field is empty or missing");
+        }
+    } catch (error) {
+        console.log(`Error: ${error}`);
+        res.status(409).send(`Failed: ${error}`)
+    }
+})
+
+/**
+ * @swagger
+ * /portal/research-resources/get-info/week-1:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 1 resources
+ *      description: This api end-point is used to fetch all week 1 resources
+ *      responses:
+ *          200:
+ *              description: Week 1 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/research-resources'
+ *                              
+ *          409:
+ *              description: Week 1 Resource Not Found
+ */
+app.get('/portal/research-resources/get-info/week-1', async (req, res) => {
+    const resource = await research_resources.find({ 'week': 1 });
+    if (resource != null) {
+        console.log(resource);
+        res.status(200).send(resource);
+    } else {
+        res.status(409).send("Resource Not Found");
+    }
+});
+
+/**
+ * @swagger
+ * /portal/research-resources/get-info/week-2:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 2 resources
+ *      description: This api end-point is used to fetch all week 2 resources
+ *      responses:
+ *          200:
+ *              description: Week 2 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/research-resources'
+ *                              
+ *          409:
+ *              description: Week 2 Resource Not Found
+ */
+app.get('/portal/research-resources/get-info/week-2', async (req, res) => {
+    const resource = await research_resources.find({ 'week': 2 });
+    if (resource != null) {
+        console.log(resource);
+        res.status(200).send(resource);
+    } else {
+        res.status(409).send("Resource Not Found");
+    }
+});
+
+/**
+ * @swagger
+ * /portal/research-resources/get-info/week-3:
+ *  get:
+ *      summary: This api end-point is used to fetch all week 3 resources
+ *      description: This api end-point is used to fetch all week 3 resources
+ *      responses:
+ *          200:
+ *              description: Week 3 Resources Found
+ *              content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/research-resources'
+ *                              
+ *          409:
+ *              description: Week 3 Resource Not Found
+ */
+app.get('/portal/research-resources/get-info/week-3', async (req, res) => {
+    const resource = await research_resources.find({ 'week': 3 });
+    if (resource != null) {
+        console.log(resource);
+        res.status(200).send(resource);
+    } else {
+        res.status(409).send("Resource Not Found");
+    }
+});
+
+/**
+ * @swagger
+ * paths:
+ *  /portal/research-resources/download/{file-name}:
+ *      get:
+ *          summary: This api end-point is used to fetch all 
+ *          parameters:
+ *            - in: path
+ *              name: file-name
+ *              required: true
+ *              type: string
+ *          responses:
+ *              200:
+ *                  description: A PDF File
+ *                  content:
+ *                      application/pdf:
+ *                          schema:
+ *                              type: string
+ *                              format: binary
+ */
+app.get('/portal/research-resources/download/:url', async (req, res) => {
+
+    const file = research_resources.findOne({ url: req.params.url });
+
+    console.log(req.params.url);
+    var url = __dirname + '/resources/research/' + req.params.url
+    //console.log(url);
+    res.status(200).download(url);
+});
+
+/**
+ * @swagger
+ * paths:
+ *  /portal/research-resources/delete/{file-name}:
+ *      delete:
+ *          summary: This api end-point is used to fetch all 
+ *          parameters:
+ *            - in: path
+ *              name: file-name
+ *              required: true
+ *              type: string
+ *          responses:
+ *              200:
+ *                  description: PDF file deleted
+ *                  content:
+ *                  application/json:
+ *                      schema: 
+ *                          type: string
+ */
+app.delete('/portal/research-resources/delete/:url', async (req, res) => {
+    const file = await research_resources.findOneAndDelete({ url: req.params.url });
+
+    var filePath = './resources/research/' + req.params.url
+
+    console.log(filePath);
+
+    if (!filePath) {
+        return res.status(400).json({ error: 'File path is missing in the request body.' });
+    }
+
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to delete the file.' });
+        }
+
+        return res.status(200).json({ message: 'File deleted successfully.' });
+    });
+})
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
