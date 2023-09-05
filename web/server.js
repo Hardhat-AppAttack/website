@@ -73,6 +73,10 @@ app.get('/register', (req, res) => {
     res.sendFile(__dirname+'/register.html');
 })
 
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname+'/login.html');
+})
+
 // app.post('/contact', (req, res) => {
 //     res.send("Thank you for getting in touch!");
 // })
