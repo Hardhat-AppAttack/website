@@ -2,10 +2,16 @@ var express = require("express")
 var app = express()
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
+const bcrypt = require("bcrypt")
 const mongoose = require("mongoose")
 const contactForm = require("./models/formData")
 const recruitForm = require("./models/recruitForm")
-const url = "mongodb+srv://kaviuln1335:kaviuln@cluster0.hcagxgu.mongodb.net/?retryWrites=true&w=majority"
+const jwt = require('jsonwebtoken')
+const user = require('./models/user')
+require("dotenv").config();
+
+//const url = "mongodb+srv://kaviuln1335:kaviuln@cluster0.hcagxgu.mongodb.net/?retryWrites=true&w=majority"
+const url = "mongodb+srv://deakinappattack:d3ak1nappattack@clusterappattack.wcr9lfl.mongodb.net/?retryWrites=true&w=majority"
 
 
 app.use(express.static(__dirname));
@@ -51,7 +57,7 @@ app.get('/about', (req, res) => {
     res.sendFile(__dirname+'/aboutUs.html');
 })
 
-app.get('/contact', (req, res) => {
+app.get('/enquiry', (req, res) => {
     res.sendFile(__dirname+'/contactUs.html');
 })
 
@@ -71,15 +77,13 @@ app.get('/register', (req, res) => {
 //     res.send("Thank you for getting in touch!");
 // })
 
-app.post('/contact', (req, res) => {
-    let contact = new contactForm  ({
-        name: req.body.name,
-        id: req.body.id,
-        email: req.body.email,
+app.post('/enquiry', (req, res) => {
+    let enquiry = new contactForm  ({
+        std_id: req.body.std_id,
         message: req.body.message
     });
 
-    contact.save();
+    enquiry.save();
     res.send("Thanks for contacting us!");
     //res.redirect('/path')
    // res.json(req.body);
@@ -115,9 +119,9 @@ app.post('/register', (req, res) => {
         }
     let users = new user ({
         name: req.body.name,
-        id: req.body.id,
+        std_id: req.body.std_id,
         email: req.body.email,
-        contact: req.body.contact,
+        is_admin: req.body.is_admin,
         password: hashedPass
         
     });
@@ -128,6 +132,49 @@ app.post('/register', (req, res) => {
 })
 
  })
+
+
+ app.post('/login', (req, res) => {
+
+    var email = req.body.email
+    var password = req.body.password
+
+    user.findOne({$or: [{email:email}, {std_id:email}] })
+    .then(user => {
+        if(user){
+            bcrypt.compare(password, user.password, function(err, result) {
+                if(err){
+                    res.json({error: err})
+                }
+                if(result){
+                   let token = jwt.sign({name: user.name}, 'verySecretValue', {expiresIn: '2h'})
+                   res.json({message:"Login Successful! ", token})
+                   res.send("Login Successful")
+            
+                    
+                }
+                else{
+                    res.json({
+                        message: "Email/ID or Password Invalid!"
+                    })
+                    //res.send("Login Failed! Email or Password invalid.")
+                }
+
+            })
+
+        }
+        else {
+            res.json({message: 'No user found!'})
+        }
+    })
+    .catch(error => {
+        res.json({
+            message:"No user found!"
+        })
+    })
+
+
+})
 
 app.listen(port,()=>{
     console.log("App listening to: " + port)

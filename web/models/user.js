@@ -9,13 +9,13 @@ const userSchema = new Schema({
         max: 50
     },
 
-    contact: {
-        type: String,
-        minlength: 10,
-        maxlength: 13,
-        unique: false, 
-        required: true
-    },
+    // contact: {
+    //     type: String,
+    //     minlength: 10,
+    //     maxlength: 13,
+    //     unique: false, 
+    //     required: true
+    // },
     
     email: {
         type: String,
@@ -25,13 +25,18 @@ const userSchema = new Schema({
         unique: true
     },
 
-    id: {
+    std_id: {
         type: String,
         trim: true,
         required: true,
         unique: true,
         maxlength: 10,
         minlength: 10
+    },
+
+    is_admin: {
+        type: Boolean,
+        required: true
     },
 
     password: {

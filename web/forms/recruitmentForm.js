@@ -14,8 +14,8 @@ const recruitFormSubmit = (req,res) => {
             team: req.body.team,
             prev_exp: req.body.prev_exp,
             leadership_interest: req.body.leadership_interest,
-            available_days: req.body.available_days
-            //available_timing: req.body.available_timing
+            available_days: req.body.available_days,
+            available_timing: req.body.available_timing
             
         })
         userData.save()
