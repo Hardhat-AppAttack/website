@@ -10,6 +10,7 @@ const fs = require('fs');
 
 const pt_resources = require('./models/pt-resources');
 const research_resources = require('./models/research-resources');
+const { web_dev_resources, web_dev_tools } = require('./models/web-dev-resources');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -590,6 +591,122 @@ app.delete('/portal/research-resources/delete/:url', async (req, res) => {
         return res.status(200).json({ message: 'File deleted successfully.' });
     });
 })
+
+app.get('/portal/web-dev-resources/week-1', async (req, res) => {
+    const resource = await web_dev_resources.find({ 'week': 1 });
+    if (resource != null) {
+        console.log(resource);
+        res.status(200).send(resource);
+    } else {
+        res.status(409).send("Resource Not Found");
+    }
+});
+
+app.post('/portal/web-dev-resources/', async (req, res) => {
+    try {
+        const { name, week, tutorial_type, description, time_taken_to_complete, url } = req.body;
+
+        const request = req.body;
+
+        var run = true;
+
+        if (Object.keys(request).length == 0 || Object.keys(request).length < 6) {
+            run = false;
+        }
+
+        for (const element in request) {
+            if (request.hasOwnProperty(element) && request[element].length == 0) {
+                console.log(`Field ${element} is empty`);
+                run = false;
+                break;
+            }
+        }
+
+        if (run) {
+            const new_resource = new web_dev_resources({
+                name,
+                week,
+                tutorial_type,
+                description, 
+                time_taken_to_complete, 
+                url
+            })
+
+            const insert = await web_dev_resources.create(new_resource);
+
+            if (insert != null) {
+                res.status(201).send("New Resource Adding Operation Sucessfully");
+            } else {
+                res.status(409).send("New Resource Adding Operation Failed");
+            } 
+        } else if (!run) {
+            res.status(409).send("Request is empty or a field is empty or missing");
+        }
+
+
+    } catch (error) {
+        console.log(`Error: ${error}`);
+        res.status(409).send(`Failed: ${error}`)
+    }
+});
+
+app.delete('/portal/web-dev-resources', async (req, res) => {
+    try {
+        const { name, week } = req.body;
+
+        const request = req.body;
+        console.log(request);
+
+        var run = true;
+
+        if (Object.keys(request).length === 0 || Object.keys(request).length < 2) {
+            run = false;
+        }
+
+        console.log("delete");
+
+        if (run) {
+            console.log(Object.keys(request).length);
+        } else {
+            console.log("Run is false");
+        }
+
+        for (const element in request) {
+            if (request.hasOwnProperty(element) && request[element].length === 0) {
+                console.log(`Field ${element} is empty`);
+                run = false;
+                break;
+            }
+        }
+
+        if (run) {
+            console.log(Object.keys(request).length);
+        } else {
+            console.log("Run is false");
+        }
+
+        if (run) {
+            const query = {
+                name,
+                week
+            }
+
+            const del = await web_dev_resources.findOneAndDelete(query);
+
+            if (del != null) {
+                res.status(204).send("Resource is deleted");
+            } else {
+                res.status(409).send("Resources is not deleted");
+            }
+        } else if (!run) {
+            res.status(409).send("Request is empty or a field is empty or missing");
+        }
+
+    } catch (error) {
+        console.log(`Error ${error}`);
+        res.status(409).send(`Error`);
+    }
+});
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
