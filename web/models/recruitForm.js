@@ -85,7 +85,7 @@ const recruitFormSchema = new Schema({
     },
 
     available_timing: {
-        type: String,
+        type: Object,
         required: true,
         max: 50
       }
