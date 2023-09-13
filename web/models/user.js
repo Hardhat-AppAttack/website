@@ -6,22 +6,14 @@ const userSchema = new Schema({
         type: String,
         trim: true,
         required: true,
-        max: 50
+        //max: 50
     },
-
-    // contact: {
-    //     type: String,
-    //     minlength: 10,
-    //     maxlength: 13,
-    //     unique: false, 
-    //     required: true
-    // },
     
     email: {
         type: String,
         trim: true,
         required: true,
-        max: 50,
+        //max: 50,
         unique: true
     },
 
@@ -34,20 +26,26 @@ const userSchema = new Schema({
         minlength: 10
     },
 
+    password: {
+        type: String, 
+        required: true
+    },
+
     is_admin: {
         type: Boolean,
         required: true
     },
 
-    password: {
+    token: {
         type: String, 
-        required: true
-    }
+        default: ''
+    },
 
-    // verified: {
-    //     type: Boolean
-    // }
+    is_verified: {
+        type: Boolean,
+        default: 0
+    }
 }, {timestamps: true})
 
-const user = mongoose.model('AppAttack_SignUp', userSchema)
+const user = mongoose.model('AppAttack_Reg', userSchema)
 module.exports = user
