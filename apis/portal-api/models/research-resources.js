@@ -2,32 +2,13 @@ const mongoose = require('mongoose');
 const validate = require('mongoose-validator');
 
 module.exports = mongoose.model('research-resources', new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
+    name: String,
     created: {
         type: Date,
         default: Date.now
     },
-    week: {
-        type: Number, 
-        required: true
-    },
-    description: {
-        type: String, 
-        required: true
-    },
-    time_taken_to_complete: {
-        type: String,
-        required: true
-    },
-    url: {
-        type: String,
-        reuired: true,
-        validate: validate({
-            validator: 'isURL',
-            message: 'Invalid URL'
-        }),
-    }
+    week: Number,
+    description: String,
+    time_taken_to_complete: String,
+    url: String
 }, { collection: 'research-resources' }))

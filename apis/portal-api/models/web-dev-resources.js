@@ -10,19 +10,13 @@ const web_rev_resource_schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    week: {
-        type: Number,
-        required: true
-    },
+    week: Number,
     tutorial_type: {
         type: String,
         required: true,
         enum: ['language', 'tool', 'web development concepts']
     },
-    description: {
-        type: String,
-        required: true
-    },
+    description: String,
     time_taken_to_complete: String,
     url: {
         type: String,
