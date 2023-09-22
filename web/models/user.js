@@ -6,39 +6,46 @@ const userSchema = new Schema({
         type: String,
         trim: true,
         required: true,
-        max: 50
-    },
-
-    contact: {
-        type: String,
-        min: 10,
-        max: 13,
-        unique: false, 
-        required: true
+        //max: 50
     },
     
     email: {
         type: String,
         trim: true,
         required: true,
-        max: 50,
+        //max: 50,
         unique: true
     },
 
-    id: {
+    std_id: {
         type: String,
         trim: true,
         required: true,
         unique: true,
-        max: 10,
-        min: 10
+        maxlength: 10,
+        minlength: 10
     },
 
     password: {
         type: String, 
         required: true
+    },
+
+    is_admin: {
+        type: Boolean,
+        required: true
+    },
+
+    token: {
+        type: String, 
+        default: ''
+    },
+
+    is_verified: {
+        type: Boolean,
+        default: 0
     }
 }, {timestamps: true})
 
-const user = mongoose.model('AppAttack_SignUp', userSchema)
+const user = mongoose.model('AppAttack_Reg', userSchema)
 module.exports = user

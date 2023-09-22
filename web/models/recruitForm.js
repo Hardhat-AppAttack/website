@@ -23,7 +23,8 @@ const recruitFormSchema = new Schema({
     std_id: {
         type: Object,
         required: true,
-        max: 50,
+        maxlength: 10,
+        minlength: 10,
         unique: true,
         validate: {
             validator: async std_id => await recruitForm.where({ std_id }).countDocuments() === 0,

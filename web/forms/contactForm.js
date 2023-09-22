@@ -5,9 +5,7 @@ const formData = require('../Model/formData');
 const formSubmit = (req,res) => {
    
         let userData = new formData ({
-            name: req.body.name,
-            id: req.body.id,
-            email: req.body.email,
+            std_id: req.body.std_id,
             message: req.body.message
             
         })
