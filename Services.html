@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheet/styling.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="./scripts/load_nav.js"></script>
+    <script src="./scripts/load_footer.js"></script>
+    <title>HardHat</title>
+</head>
+<!-- Body Content -->
+<body style="background-color: #dddddd;"> 
+  <div id="navbar"></div>
+   <!-- Hero Banner -->
+   <div class="hero-banner" style="background-image: url('./images/Istock.jpg');">
+    <div class="container-full-width">
+            
+            <!-- 1st Item headingOne-->
+            <div class="accordion" id="jobsAccordion">
+              <div class="accordion-flex-container">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Pen-Testing
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#jobsAccordion">
+                    <div class="accordion-body bg-info">
+                        Lorem ipsum.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd Item "headingTwo"-->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Consulting
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#jobsAccordion">
+                  <div class="accordion-body bg-info">
+                        Lorem ipsum.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3rd Item "headingThree"-->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Mentoring
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#jobsAccordion">
+                        <div class="accordion-body bg-info">
+                        Lorem ipsum.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4th Item headingFour-->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Teaching
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#jobsAccordion">
+                  <div class="accordion-body bg-info">
+                        Lorem ipsum.
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of accordion-flex-container -->
+    </div> <!-- End of accordion -->
+</div> <!-- End of container-full-width -->
+</div> <!-- End of hero-banner --> 
+
+<!--Second Body Section-->
+<div class="container mt-5"> 
+  <div class="text-center">
+      <h1>Our Services Over Time</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <br>
+      <h1>Histogram</h1>
+      <img src="./images/Histogram.PNG" alt="" style="display:block; margin:auto; padding:40px;">
+  </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>
