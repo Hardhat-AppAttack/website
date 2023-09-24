@@ -1,0 +1,51 @@
+/* Nav Height */
+.navbar {
+    min-height: 100px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow box custom css*/
+}
+.navbar-brand img {
+    height: 40px; 
+    width: auto; 
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+}
+.hero-banner {
+    /* background-image: url('Main_Banner.jpg');  */
+    background-size: cover;
+    background-position: center top; /* Vertical restriction to the top */
+    height: 50vh; 
+    text-align: left;
+    padding: 100px 0; /* top & bottom padding */
+}
+/* Main Titles */
+h1 {
+    font-size: 52px;
+}
+
+/* Text & lists*/
+p, ul, ol {
+    font-size: 20px;
+}
+/* Secondary Titles */
+h2 {
+    font-size: 36px;
+}
+
+/* Links and References */
+a, .reference {
+    font-size: 16px;
+}
+.white-icon {
+    color: white; /* icon color = white */
+    padding: 10px; /*  padding around the icon */
+}
+.carousel-item img {
+    max-width: 75%; /* max width */
+    max-height: 400px; /* max height */
+    margin: 0 auto; /* horizontally centered */
+}
