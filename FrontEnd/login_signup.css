@@ -5,7 +5,7 @@ body{
     background-color: gray;
   }
   a:visited {
-    color: inherit; /* This will ensure the link retains its original color even after being visited */
+    color: inherit; 
 }
 
   
