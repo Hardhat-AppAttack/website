@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Tool</title>
+</head>
+<body>
+  <h1>Password Tool</h1>
+  <label for="password">Enter your password:</label>
+  <input type="text" id="password">
+  <button onclick="checkPassword()">Check Password</button>
+
+  <p id="result"></p>
+  
+  <h2>Generate New Password</h2>
+  <label for="length">Password Length:</label>
+  <input type="number" id="length" min="8" max="20" value="12">
+  <button onclick="generatePassword()">Generate Password</button>
+
+  <p id="newPassword"></p>
+
+  <h2>Create Safe and Memorable Password</h2>
+  <p>Choose a method:</p>
+  <select id="method">
+    <option value="acronym">Acronym</option>
+    <option value="song">Song Lyrics</option>
+  </select>
+  <button onclick="createSafePassword()">Create Password</button>
+
+  <p id="safePassword"></p>
+
+  <script>
+    const leakedPasswords = ["password1", "123456", "qwerty", "letmein"]; // Example leaked passwords
+
+    function checkPassword() {
+      const passwordInput = document.getElementById("password");
+      const result = document.getElementById("result");
+
+      const userPassword = passwordInput.value;
+      if (leakedPasswords.includes(userPassword)) {
+        result.textContent = "Your password is in the leaked dataset. Please choose a different one.";
+      } else {
+        result.textContent = "Your password is secure!";
+      }
+    }
+
+    function generatePassword() {
+      const lengthInput = document.getElementById("length");
+      const newPasswordOutput = document.getElementById("newPassword");
+
+      const length = parseInt(lengthInput.value);
+      const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+      let newPassword = '';
+
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        newPassword += charset.charAt(randomIndex);
+      }
+
+      newPasswordOutput.textContent = `Generated Password: ${newPassword}`;
+    }
+
+    function createSafePassword() {
+      const methodSelect = document.getElementById("method");
+      const safePasswordOutput = document.getElementById("safePassword");
+
+      const method = methodSelect.value;
+
+      let safePassword = '';
+      if (method === "acronym") {
+        safePassword = "ExampleAcronymPassword"; // implementation WIP
+      } else if (method === "song") {
+        safePassword = "ExampleSongLyricsPassword"; // implementation WIP
+      }
+
+      safePasswordOutput.textContent = `Safe Password: ${safePassword}`;
+    }
+  </script>
+</body>
+</html>
