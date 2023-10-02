@@ -1,0 +1,156 @@
+
+  <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Registration Page</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                }
+
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                }
+
+                .form-group {
+                    margin-bottom: 15px;
+                }
+
+                label {
+                    display: block;
+                    font-weight: bold;
+                }
+
+                input[type="text"],
+                input[type="password"],
+                input[type="email"],
+                input[type="tel"],
+                select {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                input[type="file"] {
+                    width: 100%;
+                }
+
+                .checkbox-group {
+                    display: flex;
+                    align-items: center;
+                }
+
+                input[type="checkbox"] {
+                    margin-right: 10px;
+                }
+
+                button {
+                    background-color: #007BFF;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                    button.reset {
+                        background-color: #ccc;
+                    }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Registration</h1>
+                <form id="registration-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <label><input type="radio" name="gender" value="Male"> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                        <label><input type="radio" name="gender" value="Other"> Other</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phone-number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" required></textarea>
+                    </div>
+                    <div class="inputfield">
+                        <label>State</label>
+                        <div class="custom_select">
+                            <select id="state" name="state" required>
+                                <option value="">--Select your state--</option>
+                                <option value="Victoria">Victoria</option>
+                                <option value="Queensland">Queensland</option>
+                                <option value="New south Wales">New South Wales</option>
+                                <option value="Tasmania">Tasmania</option>
+                                <option value="Western Australia">Western Australia</option>
+                                <option value="South Australia">South Australia</option>
+
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" name="pincode" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Hobbies</label>
+                            <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+                            <label><input type="checkbox" name="hobbies" value="Sports"> Sports</label>
+                            <label><input type="checkbox" name="hobbies" value="Cooking"> Cooking</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Upload Photo</label>
+                            <input type="file" id="photo" name="photo" accept="image/*" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="declaration" name="declaration" required>
+                            <label for="declaration">I agree to the terms and conditions</label>
+                        </div>
+                        <button type="submit" id="register-button">Register</button>
+                        <button type="reset" class="reset">Reset</button>
+
+                        
+                        </div>
+                </form>
+            </div>
+            <script src="register.js"></script>
+        </body>
+    </html>
+
+
