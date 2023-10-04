@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Form</title>
+    <!-- Added Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .contact-box {
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            left:35%;
+            top: 20%;
+            color: white;
+            background-color: none;
+        }
+        @media (max-width: 768px) {
+    .gfg {
+        top: 5%; /* Adjust position for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+        width: fit-content;
+    }
+}
+        .contact-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .center-button {
+            text-align: center;
+        }
+        .gfg{
+        display: flex;
+        flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+
+            position: relative;
+        }
+        .Recruitment{
+            margin: 5rem;
+        }
+        img{
+            width: 100%;
+            height: max-content;
+        }
+       
+    </style>
+</head>
+<body>
+    
+        <div class="gfg">
+        <img src="/images/contact-us-banner.jpg">
+        <div class="contact-box" >
+            <h4 style="font-size: 24px;">Contact Us</h4> <!-- Decreased font size -->
+            <p>For further information please contact us on the given details:</p>
+            <ul>
+                <li>Email: hardhat@gmail.com</li>
+                <li>Phone No.: 04*** *</li>
+                <li>Address: 221 Burwood Hwy, Burwood VIC 3125</li>
+            </ul>
+        </div>
+        </div>
+<div class="Recruitment">
+        <h1 class="text-center">Recruitment Form</h1>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Put your message here</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="center-button">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    
+</div>
+
+    <!-- Added Bootstrap JS (Optional, if you need JavaScript features) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

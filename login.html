@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        /* Custom CSS for the background */
+        body {
+            background-image: url("/images/background.jpg");
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            background-color: transparent;
+        }
+
+        .login-box h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Left-align the form labels */
+        .form-group label {
+            text-align: left;
+            display: block; /* Ensures labels are on top of input fields */
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Left-align the form input fields */
+        .form-control {
+            text-align: left;
+        }
+
+        /* Change button and link text color and style */
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        p a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box text-center">
+        <!-- Added the logo image here -->
+        <img src="/images/Logo.png" alt="Logo" width="150" height="100">
+        <h2>Appattack Sign On</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Sign On</button>
+            </div>
+        </form>
+        <p><span style="font-weight: bold; color: white;">Don't have a Appattack account?</span> <a href="signup.html">Sign Up Here</a></p>
+    </div>
+
+    <!-- Added Bootstrap JS scripts at the end of the body -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
